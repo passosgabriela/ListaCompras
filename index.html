@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Compras - IHC</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-100 min-h-screen py-8 px-4 text-slate-800">
+  <main class="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 space-y-6">
+    
+    <!-- Cabeçalho -->
+    <header class="border-b pb-4">
+      <h1 class="text-2xl font-bold text-slate-900">🛒 Lista de Compras</h1>
+      <p class="text-sm text-slate-500">Gerencie seus itens de forma rápida e organizada.</p>
+    </header>
+
+    <!-- Prevenção de Erros / Mensagem de Feedback -->
+    <div id="feedback-message" class="hidden p-3 rounded-lg text-sm font-medium transition-all" role="alert"></div>
+
+    <!-- Formulário de Adição -->
+    <form id="item-form" class="flex flex-col sm:flex-row gap-2">
+      <div class="flex-1">
+        <label for="item-input" class="sr-only">Nome do Produto</label>
+        <input 
+          type="text" 
+          id="item-input" 
+          placeholder="Ex: Leite Desnatado"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        >
+      </div>
+      
+      <div class="w-full sm:w-32">
+        <label for="category-select" class="sr-only">Categoria</label>
+        <select id="category-select" class="w-full px-3 py-2 border rounded-lg bg-white focus:ring-2 focus:ring-blue-500">
+          <option value="Geral">Geral</option>
+          <option value="Hortifrúti">Hortifrúti</option>
+          <option value="Padaria">Padaria</option>
+          <option value="Laticínios">Laticínios</option>
+          <option value="Limpeza">Limpeza</option>
+        </select>
+      </div>
+
+      <button 
+        type="submit" 
+        class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-5 py-2 rounded-lg transition-colors cursor-pointer flex items-center justify-center gap-1"
+      >
+        <span>+</span> Adicionar
+      </button>
+    </form>
+
+    <!-- Filtros e Estatísticas (Requisitos Desejáveis) -->
+    <section class="flex flex-wrap items-center justify-between gap-4 pt-2 border-t">
+      <div class="flex gap-1 text-sm font-medium">
+        <button id="filter-all" class="px-3 py-1 rounded-md bg-blue-100 text-blue-700">Todos</button>
+        <button id="filter-pending" class="px-3 py-1 rounded-md hover:bg-slate-100">Pendentes</button>
+        <button id="filter-completed" class="px-3 py-1 rounded-md hover:bg-slate-100">Comprados</button>
+      </div>
+      
+      <div id="item-counter" class="text-xs text-slate-500 font-medium">
+        0 itens | 0 comprados
+      </div>
+    </section>
+
+    <!-- Lista de Itens -->
+    <section>
+      <ul id="item-list" class="space-y-2">
+        <!-- Renderizado dinamicamente via JS -->
+      </ul>
+      <p id="empty-state" class="text-center text-slate-400 py-8">Sua lista está vazia.</p>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

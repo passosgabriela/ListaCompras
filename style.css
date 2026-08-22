@@ -1,0 +1,10 @@
+/* Transições para feedback visual fluído */
+.item-purchased span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Transição de feedback de notificação */
+#feedback-message {
+  transition: opacity 0.3s ease-in-out;
+}
